@@ -1,0 +1,12 @@
+.boton {
+    display: inline-block;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    background-color: cornflowerblue;
+}
+
+.imagenBoton{
+    width: 20px;
+    height: 20px;
+}
