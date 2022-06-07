@@ -8,13 +8,13 @@ function ItemCount({ stock, inicial, onAdd }) {
   const [cantidad, setCantidad] = useState(parseInt(inicial));
 
   const cantidadMas = () => {
-    if ((cantidad + 1) <= stock) {
+    if (cantidad + 1 <= stock) {
       setCantidad(cantidad + 1);
     }
   };
 
   const cantidadMenos = () => {
-    if ((cantidad - 1) >= parseInt(inicial)) {
+    if (cantidad - 1 >= parseInt(inicial)) {
       setCantidad(cantidad - 1);
     }
   };
