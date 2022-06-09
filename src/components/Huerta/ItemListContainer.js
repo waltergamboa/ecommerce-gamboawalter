@@ -28,11 +28,11 @@ function ItemListContainer({ gretting }) {
       <div>
         <h2 className="titulo">{gretting}</h2>
         <ItemCount stock={stock} inicial="1" onAdd={onAdd} />
-        {cargando ?
-        <h1>Buscando la información...</h1>
-       :
-        <ItemList productos={productos} />
-      }
+        {cargando ? (
+          <h1>Buscando la información...</h1>
+        ) : (
+          <ItemList productos={productos} />
+        )}
       </div>
     </>
   );
