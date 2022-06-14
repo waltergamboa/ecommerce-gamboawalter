@@ -433,10 +433,16 @@ const productos = [
   }
 ]
 
-export const getFetch = ()=>{
+export const getFetch = (id)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(productos);
+            if (id){
+              resolve(productos.find(producto => producto.id === id));
+            }
+            else{
+              resolve(productos);
+            }
+            
         }, 2000);
         
 });
