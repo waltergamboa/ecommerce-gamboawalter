@@ -1,46 +1,46 @@
-import manzana from "../../assets/images/huerta/frutas/Manzana.jpg";
-import naranja from "../../assets/images/huerta/frutas/Naranja.jpg";
-import anana from "../../assets/images/huerta/frutas/anana.jpg";
-import banana from "../../assets/images/huerta/frutas/banana.jpg";
-import melon from "../../assets/images/huerta/frutas/melon.jpg";
-import kiwi from "../../assets/images/huerta/frutas/Kiwi.jpg";
-import ciruelacolorada from "../../assets/images/huerta/frutas/ciruelacolorada.jpg";
-import frutilla from "../../assets/images/huerta/frutas/frutilla.jpg";
-import palta from "../../assets/images/huerta/frutas/palta.jpg";
-import higos from "../../assets/images/huerta/frutas/higos.jpg";
-import lima from "../../assets/images/huerta/frutas/lima.jpg";
-import limon from "../../assets/images/huerta/frutas/Limon.jpg";
-import mandarina from "../../assets/images/huerta/frutas/mandarina.jpg";
-import pomelorojo from "../../assets/images/huerta/frutas/pomelorojo.jpg";
-import uvanegra from "../../assets/images/huerta/frutas/uvanegra.jpg";
-import perejil from "../../assets/images/huerta/vegetales/perejil.jpg";
-import morronamarillo from "../../assets/images/huerta/vegetales/morron-amarillo.jpg";
-import morronrojo from "../../assets/images/huerta/vegetales/Morron-Rojo.jpg";
-import radicheta from "../../assets/images/huerta/vegetales/Radicheta.jpg";
-import laurel from "../../assets/images/huerta/vegetales/laurel.jpg";
-import rucula from "../../assets/images/huerta/vegetales/Rucula.jpg";
-import remolacha from "../../assets/images/huerta/vegetales/Remolacha.jpg";
-import tomatecherry from "../../assets/images/huerta/vegetales/tomatecherry.jpg";
-import tomateperita from "../../assets/images/huerta/vegetales/tomateperita.jpg";
-import verdeo from "../../assets/images/huerta/vegetales/verdeo.jpg";
-import jalapenios from "../../assets/images/huerta/vegetales/jalapenios.jpg";
-import papanegra from "../../assets/images/huerta/vegetales/papanegra.jpg";
-import kale from "../../assets/images/huerta/vegetales/kale.jpg";
-import papines from "../../assets/images/huerta/vegetales/papines.jpg";
-import rabano from "../../assets/images/huerta/vegetales/rabano.jpg";
-import champi from "../../assets/images/huerta/gourmet/champi.jpg";
-import codorniz from "../../assets/images/huerta/gourmet/codorniz.jpg";
-import eneldo from "../../assets/images/huerta/gourmet/eneldo.jpg";
-import menta from "../../assets/images/huerta/gourmet/menta.jpg";
-import oregano from "../../assets/images/huerta/gourmet/oregano.jpg";
-import romero from "../../assets/images/huerta/gourmet/Romero.jpg";
-import ciboulette from "../../assets/images/huerta/gourmet/ciboulette.jpg";
-import cilantro from "../../assets/images/huerta/gourmet/cilantro.jpg";
-import salvia from "../../assets/images/huerta/gourmet/Salvia.jpg";
-import tomillo from "../../assets/images/huerta/gourmet/tomillo.jpg";
-import radicchio from "../../assets/images/huerta/gourmet/radicchio.jpg";
-import jengibreraiz from "../../assets/images/huerta/gourmet/jengibre-raiz.jpg";
-import brotessoja from "../../assets/images/huerta/gourmet/brotessoja.jpg";
+import manzana from "../assets/images/huerta/frutas/Manzana.jpg";
+import naranja from "../assets/images/huerta/frutas/Naranja.jpg";
+import anana from "../assets/images/huerta/frutas/anana.jpg";
+import banana from "../assets/images/huerta/frutas/banana.jpg";
+import melon from "../assets/images/huerta/frutas/melon.jpg";
+import kiwi from "../assets/images/huerta/frutas/Kiwi.jpg";
+import ciruelacolorada from "../assets/images/huerta/frutas/ciruelacolorada.jpg";
+import frutilla from "../assets/images/huerta/frutas/frutilla.jpg";
+import palta from "../assets/images/huerta/frutas/palta.jpg";
+import higos from "../assets/images/huerta/frutas/higos.jpg";
+import lima from "../assets/images/huerta/frutas/lima.jpg";
+import limon from "../assets/images/huerta/frutas/Limon.jpg";
+import mandarina from "../assets/images/huerta/frutas/mandarina.jpg";
+import pomelorojo from "../assets/images/huerta/frutas/pomelorojo.jpg";
+import uvanegra from "../assets/images/huerta/frutas/uvanegra.jpg";
+import perejil from "../assets/images/huerta/vegetales/perejil.jpg";
+import morronamarillo from "../assets/images/huerta/vegetales/morron-amarillo.jpg";
+import morronrojo from "../assets/images/huerta/vegetales/Morron-Rojo.jpg";
+import radicheta from "../assets/images/huerta/vegetales/Radicheta.jpg";
+import laurel from "../assets/images/huerta/vegetales/laurel.jpg";
+import rucula from "../assets/images/huerta/vegetales/Rucula.jpg";
+import remolacha from "../assets/images/huerta/vegetales/Remolacha.jpg";
+import tomatecherry from "../assets/images/huerta/vegetales/tomatecherry.jpg";
+import tomateperita from "../assets/images/huerta/vegetales/tomateperita.jpg";
+import verdeo from "../assets/images/huerta/vegetales/verdeo.jpg";
+import jalapenios from "../assets/images/huerta/vegetales/jalapenios.jpg";
+import papanegra from "../assets/images/huerta/vegetales/papanegra.jpg";
+import kale from "../assets/images/huerta/vegetales/kale.jpg";
+import papines from "../assets/images/huerta/vegetales/papines.jpg";
+import rabano from "../assets/images/huerta/vegetales/rabano.jpg";
+import champi from "../assets/images/huerta/gourmet/champi.jpg";
+import codorniz from "../assets/images/huerta/gourmet/codorniz.jpg";
+import eneldo from "../assets/images/huerta/gourmet/eneldo.jpg";
+import menta from "../assets/images/huerta/gourmet/menta.jpg";
+import oregano from "../assets/images/huerta/gourmet/oregano.jpg";
+import romero from "../assets/images/huerta/gourmet/Romero.jpg";
+import ciboulette from "../assets/images/huerta/gourmet/ciboulette.jpg";
+import cilantro from "../assets/images/huerta/gourmet/cilantro.jpg";
+import salvia from "../assets/images/huerta/gourmet/Salvia.jpg";
+import tomillo from "../assets/images/huerta/gourmet/tomillo.jpg";
+import radicchio from "../assets/images/huerta/gourmet/radicchio.jpg";
+import jengibreraiz from "../assets/images/huerta/gourmet/jengibre-raiz.jpg";
+import brotessoja from "../assets/images/huerta/gourmet/brotessoja.jpg";
 
 
 const productos = [
@@ -443,7 +443,7 @@ export const getFetch = (id)=>{
               resolve(productos);
             }
             
-        }, 2000);
+        }, 1000);
         
 });
 }
