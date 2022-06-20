@@ -1,18 +1,14 @@
 import { useState, useEffect } from "react";
 import { getFetch } from "../../helpers/getFetch";
-import ItemCount from "../../components/ItemCount/ItemCount";
 import "./ItemListContainer.css";
 import ItemList from "../../components/ItemList/ItemList";
 import { useParams } from "react-router-dom";
 
 function ItemListContainer({ gretting }) {
-  const [stock, setStock] = useState(12);
+
 
   const { categoriaId } = useParams();
 
-  function onAdd(cantidad) {
-    setStock(stock - cantidad);
-  }
 
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
@@ -50,7 +46,6 @@ function ItemListContainer({ gretting }) {
         ) : (
           <ItemList productos={productos} />
         )}
-        {/* <ItemCount stock={stock} inicial="1" onAdd={onAdd} /> */}
       </div>
     </>
   );

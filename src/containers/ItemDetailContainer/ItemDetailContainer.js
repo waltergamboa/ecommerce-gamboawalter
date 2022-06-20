@@ -9,7 +9,7 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    getFetch(parseInt(id))
+    getFetch(id)
       .then((response) => {
         if (response) {
           setProducto(response);
