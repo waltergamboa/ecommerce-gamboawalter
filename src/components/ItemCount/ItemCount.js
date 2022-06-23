@@ -30,9 +30,7 @@ function ItemCount({ stock, inicial, onAdd }) {
     <>
       <div className="container" style={{ width: "70%", margin: "0 auto" }}>
         <div className="row">
-          <div className="col-12 mb-4">
-            <h3>Stock {stock}</h3>
-          </div>
+          <div className="col-12 mb-4">{/* <h3>Stock {stock}</h3> */}</div>
         </div>
         <div className="row">
           <div className="col-4">

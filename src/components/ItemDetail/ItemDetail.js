@@ -1,17 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import ItemCount from "../../components/ItemCount/ItemCount";
+import { useCartContext } from "../../contexts/cartContext";
 
 const ItemDetail = ({ producto }) => {
-  const [cantidad, setCantidad] = useState(0);  
-  const [stock, setStock] = useState(12);
+  const [cantidad, setCantidad] = useState(0);
+  const [stock, setStock] = useState(100);
   const [agregado, setAgregado] = useState("");
+
+  const { cart, addToCart } = useCartContext();
 
   function onAdd(cantidad) {
     setCantidad(cantidad);
     setStock(stock - cantidad);
     setAgregado("agregado");
+    addToCart({ ...producto, cantidad: cantidad });
   }
 
   return (
@@ -19,8 +23,7 @@ const ItemDetail = ({ producto }) => {
       <div className="row text-center">
         <div className="col-1"></div>
         <div className="col-10">
-          <div
-            className="card text-white bg-dark border-light m-3 text-center">
+          <div className="card text-white bg-dark border-light m-3 text-center">
             <div className="card-header text-center">
               <h3>{String(producto.categoria).toUpperCase()}</h3>
             </div>
@@ -47,18 +50,17 @@ const ItemDetail = ({ producto }) => {
               </p>
               {agregado === "agregado" ? (
                 <>
-                <Link to="/cart">
-                  <button className="btn btn-warning btn-block m-3">
-                    Terminar mi compra
-                  </button>
-                </Link>
-                <Link to="/">
-                <button className="btn btn-primary btn-block m-3">
-                  Seguir Comprando
-                </button>
-              </Link>
-              </>
-
+                  <Link to="/cart">
+                    <button className="btn btn-warning btn-block m-3">
+                      Terminar mi compra
+                    </button>
+                  </Link>
+                  <Link to="/">
+                    <button className="btn btn-primary btn-block m-3">
+                      Seguir Comprando
+                    </button>
+                  </Link>
+                </>
               ) : (
                 <ItemCount stock={stock} inicial="1" onAdd={onAdd} />
               )}
