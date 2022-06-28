@@ -6,6 +6,7 @@ import ItemListContainer from "./containers/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
 import { CartContextProvider } from "./contexts/cartContext";
+import CartWidget from "./components/CarritoImage/CartWidget";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             />
             <Route path="/detalle/:id" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/cart" element={<CartWidget />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>

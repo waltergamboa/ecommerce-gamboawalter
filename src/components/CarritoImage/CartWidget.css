@@ -1,4 +1,17 @@
-.carrito-imagen{
-    width: 70px;
-    height: 70px;
+.carrito-imagen {
+  width: 70px;
+  height: 70px;
+}
+
+.carrito-badge,
+.carrito-tag {
+  background-color: #000;
+  color: #fff;
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+  text-align: center;
+}
+.carrito-badge {
+  border-radius: 50%;
 }

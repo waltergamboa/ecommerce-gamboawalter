@@ -1,18 +1,15 @@
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import ItemCount from "../../components/ItemCount/ItemCount";
 import { useCartContext } from "../../contexts/cartContext";
 
 const ItemDetail = ({ producto }) => {
-  const [cantidad, setCantidad] = useState(0);
   const [stock, setStock] = useState(100);
   const [agregado, setAgregado] = useState("");
-
-  const { cart, addToCart } = useCartContext();
+  const { addToCart } = useCartContext();
 
   function onAdd(cantidad) {
-    setCantidad(cantidad);
     setStock(stock - cantidad);
     setAgregado("agregado");
     addToCart({ ...producto, cantidad: cantidad });
