@@ -31,7 +31,7 @@ const ItemDetail = ({ producto }) => {
 
             <div className="card-body">
               <Image
-                src={producto.img}
+                src={require(`../../assets/images/huerta/${producto.categoria}/${producto.img}.jpg`)}
                 width="200"
                 height="200"
                 alt=""

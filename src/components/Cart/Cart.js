@@ -66,7 +66,7 @@ const Cart = () => {
 
               <div className="card-body" style={{ textAlign: "center" }}>
                 <img
-                  src={item.img}
+                  src={require(`../../assets/images/huerta/${item.categoria}/${item.img}.jpg`)}
                   width="200"
                   height="200"
                   alt=""

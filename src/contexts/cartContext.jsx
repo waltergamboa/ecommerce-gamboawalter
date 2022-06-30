@@ -17,16 +17,19 @@ export const CartContextProvider = ({ children }) => {
     } else {
       setCart([...cart, item]);
     }
+    actualizarCantidad();
   };
 
   const deleteCart = () => {
     setCart([]);
+    actualizarCantidad();
   };
 
   const removeFromCart = (item) => {
     const { id } = item;
     const indice = cart.findIndex((i) => i.id === parseInt(id));
     cart.splice(indice, 1);
+    actualizarCantidad();
   };
 
   const isInCart = (id) => {
@@ -37,10 +40,18 @@ export const CartContextProvider = ({ children }) => {
     }
   };
 
+  const [cantidad, setCantidad] = useState(0);
+  const actualizarCantidad = () => {
+    const sumaCantidad = cart.reduce((acc, el) => acc + el.cantidad, 0);
+    setCantidad(sumaCantidad);
+  };
+
+
   return (
     <CartContext.Provider
       value={{
         cart,
+        cantidad,
         addToCart,
         deleteCart,
         removeFromCart,

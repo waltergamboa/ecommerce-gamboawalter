@@ -9,7 +9,7 @@ const ItemList = memo(({ productos }) => {
           id={producto.id}
           nombre={producto.nombre}
           categoria={producto.categoria}
-          img={producto.img}
+          img={require(`../../assets/images/huerta/${producto.categoria}/${producto.img}.jpg`)}
         />
       ))}
     </div>

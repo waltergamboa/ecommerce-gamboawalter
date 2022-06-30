@@ -5,17 +5,17 @@ import { useCartContext } from "../../contexts/cartContext";
 import { useEffect, useState } from "react";
 
 function CartWidget() {
-  const { cart } = useCartContext();
-  const [cantidad, setCantidad] = useState(0);
+  const { cantidad } = useCartContext();
+  // const [cantidad, setCantidad] = useState(0);
 
-  const actualizarCantidad = () => {
-    const sumaCantidad = cart.reduce((acc, el) => acc + el.cantidad, 0);
-    setCantidad(sumaCantidad);
-  };
+  // const actualizarCantidad = () => {
+  //   const sumaCantidad = cart.reduce((acc, el) => acc + el.cantidad, 0);
+  //   setCantidad(sumaCantidad);
+  // };
 
-  useEffect(() => {
-    actualizarCantidad();
-  });
+  // useEffect(() => {
+  //   actualizarCantidad();
+  // });
 
   return (
     <>

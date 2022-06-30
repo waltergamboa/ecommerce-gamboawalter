@@ -1,38 +1,41 @@
 import { useState, useEffect } from "react";
-import { getFetch } from "../../helpers/getFetch";
 import "./ItemListContainer.css";
 import ItemList from "../../components/ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import {  collection,  doc,  getDoc,  getDocs,  getFirestore,  limit,  orderBy,  query,  where,} from "firebase/firestore";
 
 function ItemListContainer({ gretting }) {
-
-
   const { categoriaId } = useParams();
-
 
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
     if (categoriaId) {
-      getFetch()
-        .then((resp) => {
-          let tmp = resp.filter(
-            (productos) => productos.categoria === categoriaId
-          );
-          if (tmp) setProductos(tmp);
-          else {
-            setProductos([]);
-          }
-        })
-        .catch((err) => console.log(err))
+      const db = getFirestore();
+      const queryProductos = collection(db, "productos");
+      const queryProductosFilter = query(
+        queryProductos,
+        where("categoria", "==", categoriaId)
+      );
+      getDocs(queryProductosFilter)
+        .then((dataRes) =>
+          setProductos(
+            dataRes.docs.map((item) => ({ id: item.id, ...item.data() }))
+          )
+        )
+        .catch((error) => console.log(error))
         .finally(() => setCargando(false));
     } else {
-      getFetch()
-        .then((resp) => {
-          setProductos(resp);
-        })
-        .catch((err) => console.log(err))
+      const db = getFirestore();
+      const queryProductos = collection(db, "productos");
+      getDocs(queryProductos)
+        .then((dataRes) =>
+          setProductos(
+            dataRes.docs.map((item) => ({ id: item.id, ...item.data() }))
+          )
+        )
+        .catch((error) => console.log(error))
         .finally(() => setCargando(false));
     }
   }, [productos, categoriaId]);
