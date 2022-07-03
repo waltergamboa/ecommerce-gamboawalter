@@ -1,18 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getFetch } from "../../helpers/getFetch";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  getFirestore,
-  limit,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
+import {doc,getDoc,getFirestore} from "firebase/firestore";
 
 const ItemDetailContainer = () => {
   const [producto, setProducto] = useState({});
@@ -36,7 +25,6 @@ const ItemDetailContainer = () => {
         ) : (
           <ItemDetail producto={producto} />
         )}
-        {/* <ItemCount stock={stock} inicial="1" onAdd={onAdd} /> */}
       </div>
     </>
   );

@@ -1,36 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Image from "react-bootstrap/Image";
 import { useCartContext } from "../../contexts/cartContext";
 
 const Cart = () => {
-  const { cart, deleteCart, removeFromCart } = useCartContext();
-  const [removido, setRemovido] = useState(false);
-
-  const remover = (event) => {
-    const myArray = event.target.id.split("-");
-    const id = myArray[1];
-    removeFromCart({ id: id });
-    setRemovido(!removido);
-  };
-
-  const [sumaTotal, setSumaTotal] = useState(0);
-
-  const actualizarSumaTotal = () => {
-    const sumar = cart.reduce((acc, el) => acc + el.cantidad * el.precio, 0);
-    setSumaTotal(sumar);
-    sumar === 0
-      ? actualizarMensajes("Su carrito esta vacio...")
-      : actualizarMensajes("");
-  };
+  const { cart, deleteCart, removeFromCart, precioTotal } = useCartContext();
 
   const [mensaje, setMensaje] = useState("");
-
   const actualizarMensajes = (mensaje) => {
     setMensaje(mensaje);
   };
 
   useEffect(() => {
-    actualizarSumaTotal();
+    precioTotal() === 0
+      ? actualizarMensajes("Su carrito esta vacio...")
+      : actualizarMensajes("");
   });
 
   return (
@@ -41,9 +25,13 @@ const Cart = () => {
         </div>
         <div className="col-12" style={{ textAlign: "center" }}>
           {cart.length === 0 ? (
-            <Link to="/">
-              <button className="btn btn-primary btn-block m-3">Inicio</button>
-            </Link>
+            <>
+              <Link to="/">
+                <button className="btn btn-primary btn-block m-3">
+                  Inicio
+                </button>
+              </Link>
+            </>
           ) : (
             <></>
           )}
@@ -51,10 +39,10 @@ const Cart = () => {
       </div>
       <div className="row">
         <div className="col-12" style={{ textAlign: "center" }}>
-          {sumaTotal === 0 ? (
+          {precioTotal() === 0 ? (
             ""
           ) : (
-            <h1>Total: $ {parseFloat(String(sumaTotal)).toFixed(2)}</h1>
+            <h1>Total: $ {parseFloat(String(precioTotal())).toFixed(2)}</h1>
           )}
         </div>
       </div>
@@ -65,13 +53,13 @@ const Cart = () => {
               <div className="card-header">{item.categoria.toUpperCase()}</div>
 
               <div className="card-body" style={{ textAlign: "center" }}>
-                <img
-                  src={require(`../../assets/images/huerta/${item.categoria}/${item.img}.jpg`)}
+                <Image
+                  src={item.img}
                   width="200"
                   height="200"
                   alt=""
-                  rounded
-                ></img>
+                  rounded="true"
+                ></Image>
                 <p className="card-text">{item.nombre}</p>
                 <p className="card-text">Presentacion {item.presentacion}</p>
                 <p className="card-text">
@@ -85,9 +73,10 @@ const Cart = () => {
               </div>
               <div className="card-footer" style={{ textAlign: "right" }}>
                 <button
-                  onClick={remover}
-                  id={`producto-${item.id}`}
-                  className="btn btn-warning btn-block"
+                  onClick={() => {
+                    removeFromCart(item.id);
+                  }}
+                  className="btn btn-danger btn-block"
                 >
                   Borrar
                 </button>
@@ -98,7 +87,7 @@ const Cart = () => {
       </div>
       <div className="row">
         <div className="col-12" style={{ textAlign: "center" }}>
-          {sumaTotal === 0 ? (
+          {precioTotal() === 0 ? (
             ""
           ) : (
             <button onClick={deleteCart} className="btn btn-warning btn-block">

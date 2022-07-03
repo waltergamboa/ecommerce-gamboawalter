@@ -9,7 +9,7 @@ const Item = memo(({ id, nombre, categoria, img }) => {
         <div className="card-header">{categoria.toUpperCase()}</div>
 
         <div className="card-body" style={{ textAlign: "center" }}>
-          <Image src={img} width="200" height="200" alt="" rounded></Image>
+          <Image src={img} width="200" height="200" alt="" rounded="true"></Image>
           <p className="card-text">{nombre}</p>
         </div>
 

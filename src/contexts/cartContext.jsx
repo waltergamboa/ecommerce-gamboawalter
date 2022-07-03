@@ -7,54 +7,51 @@ export const useCartContext = () => useContext(CartContext);
 export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (item) => {
-    if (isInCart(item.id)) {
-      let itemTmp = cart.find((a) => a.id === item.id);
-      itemTmp.cantidad = itemTmp.cantidad + item.cantidad;
+  const addToCart = (objProducto) => {
+    let carritoAnterior = [...cart];
 
-      const indice = cart.findIndex((i) => i.id === item.id);
-      cart[indice] = itemTmp;
+    if (carritoAnterior.some((item) => item.id === objProducto.id)) {
+      carritoAnterior.find((item) => item.id === objProducto.id).cantidad +=
+        objProducto.cantidad;
+      setCart(carritoAnterior);
     } else {
-      setCart([...cart, item]);
+      setCart([...cart, objProducto]);
     }
-    actualizarCantidad();
   };
 
   const deleteCart = () => {
     setCart([]);
-    actualizarCantidad();
   };
 
-  const removeFromCart = (item) => {
-    const { id } = item;
-    const indice = cart.findIndex((i) => i.id === parseInt(id));
-    cart.splice(indice, 1);
-    actualizarCantidad();
-  };
-
-  const isInCart = (id) => {
-    if (cart.find((item) => item.id === id)) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  const [cantidad, setCantidad] = useState(0);
-  const actualizarCantidad = () => {
+  const cantidadProductos = () => {
     const sumaCantidad = cart.reduce((acc, el) => acc + el.cantidad, 0);
-    setCantidad(sumaCantidad);
+    return sumaCantidad;
   };
 
+  const removeFromCart = (id) => {
+    setCart(cart.filter((nuevoProducto) => nuevoProducto.id !== id));
+  };
+
+  const precioTotal = () => {
+    let total = 0;
+
+    cart.forEach((nuevoProducto) => {
+      total +=
+        parseInt(nuevoProducto.precio) * parseInt(nuevoProducto.cantidad);
+    });
+
+    return parseInt(total);
+  };
 
   return (
     <CartContext.Provider
       value={{
         cart,
-        cantidad,
         addToCart,
         deleteCart,
         removeFromCart,
+        cantidadProductos,
+        precioTotal,
       }}
     >
       {children}

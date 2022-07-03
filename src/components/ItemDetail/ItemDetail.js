@@ -31,11 +31,11 @@ const ItemDetail = ({ producto }) => {
 
             <div className="card-body">
               <Image
-                src={require(`../../assets/images/huerta/${producto.categoria}/${producto.img}.jpg`)}
+                src={producto.img}
                 width="200"
                 height="200"
                 alt=""
-                rounded
+                rounded="true"
               ></Image>
               <p className="card-text">Presentacion {producto.presentacion}</p>
             </div>

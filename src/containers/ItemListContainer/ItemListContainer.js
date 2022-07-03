@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import "./ItemListContainer.css";
 import ItemList from "../../components/ItemList/ItemList";
 import { useParams } from "react-router-dom";
-import {  collection,  doc,  getDoc,  getDocs,  getFirestore,  limit,  orderBy,  query,  where,} from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 
 function ItemListContainer({ gretting }) {
   const { categoriaId } = useParams();
@@ -11,9 +17,9 @@ function ItemListContainer({ gretting }) {
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
+    const db = getFirestore();
+    const queryProductos = collection(db, "productos");
     if (categoriaId) {
-      const db = getFirestore();
-      const queryProductos = collection(db, "productos");
       const queryProductosFilter = query(
         queryProductos,
         where("categoria", "==", categoriaId)
@@ -27,8 +33,6 @@ function ItemListContainer({ gretting }) {
         .catch((error) => console.log(error))
         .finally(() => setCargando(false));
     } else {
-      const db = getFirestore();
-      const queryProductos = collection(db, "productos");
       getDocs(queryProductos)
         .then((dataRes) =>
           setProductos(
