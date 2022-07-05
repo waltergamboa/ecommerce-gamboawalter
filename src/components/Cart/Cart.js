@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import { useCartContext } from "../../contexts/cartContext";
+import { addDoc, collection, doc, documentId, getDocs, getFirestore, query, updateDoc, where, writeBatch } from "firebase/firestore"
 
 const Cart = () => {
   const { cart, deleteCart, removeFromCart, precioTotal } = useCartContext();
+  const [ordenId, setOrdenId] = useState("");
 
   const [mensaje, setMensaje] = useState("");
   const actualizarMensajes = (mensaje) => {
@@ -15,7 +17,36 @@ const Cart = () => {
     precioTotal() === 0
       ? actualizarMensajes("Su carrito esta vacio...")
       : actualizarMensajes("");
+
+    ordenId !== "" ? actualizarMensajes("Su orden es:" + ordenId)
+    : actualizarMensajes("");
+
   });
+
+  function generarOrden(e) {
+    e.preventDefault()
+    let orden = {}     
+    
+    orden.buyer = {name: 'walter1', email: 'walter@gmail.com', phone: '123456789'}
+    orden.total = precioTotal()
+
+    orden.items = cart.map(cartItem => {
+        const id = cartItem.id
+        const nombre = cartItem.nombre
+        const cantidad = cartItem.cantidad        
+        const precio = cartItem.precio * cartItem.cantidad
+
+        
+        return {id, nombre, cantidad, precio}   
+    })    
+    // insertar una orden
+    const db = getFirestore()
+    const orderCollection = collection(db, 'ordenes')
+    addDoc(orderCollection, orden)
+    .then(resp => setOrdenId(resp.id) )
+    .finally(()=>deleteCart())
+  }
+
 
   return (
     <div>
@@ -33,7 +64,11 @@ const Cart = () => {
               </Link>
             </>
           ) : (
-            <></>
+            <>
+                  <button onClick={generarOrden} className="btn btn-primary btn-block m-3">
+                  Confirmar Orden
+                </button>
+            </>
           )}
         </div>
       </div>
