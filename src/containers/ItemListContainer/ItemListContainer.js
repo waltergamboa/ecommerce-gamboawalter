@@ -6,6 +6,7 @@ import {
   collection,
   getDocs,
   getFirestore,
+  orderBy,
   query,
   where,
 } from "firebase/firestore";
@@ -18,30 +19,22 @@ function ItemListContainer({ gretting }) {
 
   useEffect(() => {
     const db = getFirestore();
-    const queryProductos = collection(db, "productos");
-    if (categoriaId) {
-      const queryProductosFilter = query(
-        queryProductos,
-        where("categoria", "==", categoriaId)
-      );
-      getDocs(queryProductosFilter)
-        .then((dataRes) =>
-          setProductos(
-            dataRes.docs.map((item) => ({ id: item.id, ...item.data() }))
-          )
+    const aEjecutar = categoriaId
+      ? query(
+          collection(db, "productos"),
+          where("categoria", "==", categoriaId),
+          orderBy("nombre", "asc")
         )
-        .catch((error) => console.log(error))
-        .finally(() => setCargando(false));
-    } else {
-      getDocs(queryProductos)
-        .then((dataRes) =>
-          setProductos(
-            dataRes.docs.map((item) => ({ id: item.id, ...item.data() }))
-          )
+      : query(collection(db, "productos"), orderBy("categoria", "asc"));
+
+    getDocs(aEjecutar)
+      .then((dataRes) =>
+        setProductos(
+          dataRes.docs.map((item) => ({ id: item.id, ...item.data() }))
         )
-        .catch((error) => console.log(error))
-        .finally(() => setCargando(false));
-    }
+      )
+      .catch((error) => console.log(error))
+      .finally(() => setCargando(false));
   }, [productos, categoriaId]);
 
   return (

@@ -10,12 +10,12 @@ const firebaseConfig = {
   projectId: "ecommerce-gamboawalter-f4c68",
   storageBucket: "ecommerce-gamboawalter-f4c68.appspot.com",
   messagingSenderId: "568195551793",
-  appId: "1:568195551793:web:98028df2690ad59fa73b10"
+  appId: "1:568195551793:web:98028df2690ad59fa73b10",
 };
- 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const getFirestoreApp = ()=>{
-    return app;
-}
+export const getFirestoreApp = () => {
+  return app;
+};

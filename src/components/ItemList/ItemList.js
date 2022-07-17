@@ -10,6 +10,7 @@ const ItemList = memo(({ productos }) => {
           nombre={producto.nombre}
           categoria={producto.categoria}
           img={producto.img}
+          stock={producto.stock}
         />
       ))}
     </div>

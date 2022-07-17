@@ -3,18 +3,19 @@ import mas from "../../assets/images/mas.png";
 import menos from "../../assets/images/menos.png";
 import Image from "react-bootstrap/Image";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function ItemCount({ stock, inicial, onAdd }) {
-  const [cantidad, setCantidad] = useState(parseInt(inicial));
+  const [cantidad, setCantidad] = useState(inicial);
 
   const cantidadMas = () => {
-    if (cantidad + 1 <= stock) {
+    if (cantidad < stock) {
       setCantidad(cantidad + 1);
     }
   };
 
   const cantidadMenos = () => {
-    if (cantidad - 1 >= parseInt(inicial)) {
+    if (cantidad > inicial) {
       setCantidad(cantidad - 1);
     }
   };
@@ -23,14 +24,26 @@ function ItemCount({ stock, inicial, onAdd }) {
     if (stock > 0) {
       onAdd(cantidad);
     }
-    setCantidad(parseInt(inicial));
+    setCantidad(inicial);
   };
 
   return (
     <>
       <div className="container" style={{ width: "70%", margin: "0 auto" }}>
         <div className="row">
-          <div className="col-12 mb-4">{/* <h3>Stock {stock}</h3> */}</div>
+          <div className="col-12 mb-0">
+            <h3>Stock {stock}</h3>
+            {/* { 
+            <>
+            <h3>Stock {stockTotal}</h3>
+            <h2>Pedido {cantidad}</h2>
+  {(cantidad >= stockTotal) ?
+            <h3>Sin stock</h3>
+            :
+            <></>}
+            </>
+            } */}
+          </div>
         </div>
         <div className="row">
           <div className="col-4">
@@ -49,9 +62,20 @@ function ItemCount({ stock, inicial, onAdd }) {
         </div>
         <div className="row">
           <div className="col-12">
-            <button className="boton" onClick={validar}>
-              Agregar al Carrito
-            </button>
+            {stock <= 0 ? (
+              <Link to="/">
+                <button className="btn btn-primary btn-block m-3">
+                  Seguir Comprando
+                </button>
+              </Link>
+            ) : (
+              <button
+                className="btn btn-primary btn-block m-3"
+                onClick={validar}
+              >
+                Agregar al Carrito
+              </button>
+            )}
           </div>
         </div>
       </div>

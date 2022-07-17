@@ -13,6 +13,7 @@ export const CartContextProvider = ({ children }) => {
     if (carritoAnterior.some((item) => item.id === objProducto.id)) {
       carritoAnterior.find((item) => item.id === objProducto.id).cantidad +=
         objProducto.cantidad;
+
       setCart(carritoAnterior);
     } else {
       setCart([...cart, objProducto]);
@@ -43,6 +44,16 @@ export const CartContextProvider = ({ children }) => {
     return parseInt(total);
   };
 
+  // Por ahora no se usa, mas adelante para practicar. No me da el tiempo
+  const productoCantidadPedida = (id) => {
+    let cantidadPedida = 0;
+    if (cart.some((item) => item.id.toString() === id.toString())) {
+      const tmp = cart.find((item) => item.id.toString() === id.toString());
+      cantidadPedida = tmp.cantidad;
+    }
+    return cantidadPedida;
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -52,6 +63,7 @@ export const CartContextProvider = ({ children }) => {
         removeFromCart,
         cantidadProductos,
         precioTotal,
+        productoCantidadPedida,
       }}
     >
       {children}
