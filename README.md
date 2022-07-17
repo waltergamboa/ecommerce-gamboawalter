@@ -31,7 +31,7 @@ ReactJS
 
 ## Deploy para demo 
 
-> https://firebase.google.com/
+> https://storied-youtiao-526bcd.netlify.app/
 
 
 
